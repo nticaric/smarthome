@@ -12,3 +12,12 @@
  */
 
 Route::get('/', 'HomeController@temperature');
+Route::get('/temperature', function () {
+    return App\Temperature::all();
+});
+
+Route::post('temperature', function () {
+    $temp              = new App\Temperature;
+    $temp->temperature = request()->get('temperature');
+    $temp->save();
+});
